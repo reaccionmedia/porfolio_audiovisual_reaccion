@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio · Reacción Media Lab</title>
+    <meta name="description" content="Archivo de producción de Non Plus Ultra: piezas reales producidas con IA y QA humano. UGC, B-Roll, producto y visuales de marca. Buenos Aires, Argentina.">
+    <meta name="author" content="Non Plus Ultra">
+    <meta name="theme-color" content="#050505">
+    <meta name="color-scheme" content="dark">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Non Plus Ultra">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:title" content="Portfolio · Non Plus Ultra">
+    <meta property="og:description" content="Piezas reales producidas con IA y QA humano. UGC, B-Roll, producto y visuales de marca.">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="assets/img/logo-fav.svg" type="image/svg+xml">
+
+    <!--
+      TIPOGRAFÍAS WEB (OPCIONALES)
+      Si necesitás un sitio 100% sin requests externos, borrá los 2 <link> de preconnect
+      y el <link> de Google Fonts: el sitio cae automáticamente en la pila de
+      system fonts declarada en styles.css (--font-sans / --font-mono).
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Space+Mono:wght@400;700&display=swap">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#archivo">SALTAR AL ARCHIVO</a>
+
+    <div class="grid-container" id="reticula">
+
+        <!-- ============ ENCABEZADO ============ -->
+        <header class="site-header">
+            <span class="plus plus--l" aria-hidden="true">+</span>
+            <span class="plus plus--r" aria-hidden="true">+</span>
+
+            <div class="brand">
+                <img class="brand__logo" src="assets/img/logo_big.svg" width="434" height="200" alt="Reacción Media">
+            </div>
+
+            <div class="cta-container">
+                <a href="#contacto" class="cta-btn">AGENDAR VISITA →</a>
+            </div>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-movil">
+                <span class="nav-toggle__bars" aria-hidden="true"><i></i><i></i></span>
+                <span class="sr-only">Abrir menú</span>
+            </button>
+        </header>
+
+        <div class="mobile-menu" id="menu-movil" hidden>
+            <span class="plus plus--l" aria-hidden="true">+</span>
+            <span class="plus plus--r" aria-hidden="true">+</span>
+            <ul>
+                <li><a href="#">INICIO</a></li>
+                <li><a href="#archivo">PORTFOLIO</a></li>
+                <li><a href="#">BLOG</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+            </ul>
+            <a href="#contacto" class="cta-btn cta-btn--block">AGENDAR VISITA →</a>
+        </div>
+
+        <main id="contenido">
+            <!-- ============ HERO ============ -->
+            <section class="hero" aria-labelledby="titulo-hero">
+                <span class="plus plus--l" aria-hidden="true">+</span>
+                <span class="plus plus--r" aria-hidden="true">+</span>
+
+                <span class="archive-tag">ARCHIVOS DE PRODUCCIÓN / 2026</span>
+                <h1 id="titulo-hero">PORTFOLIO</h1>
+
+                <p class="hero-description">
+                    Nuestro propósito es claro: empoderar las marcas de nuestros clientes y ayudarlas a alcanzar sus objetivos de comunicación con éxito.
+                </p>
+
+                <ul class="hero-tags">
+                    <li>CALIDAD / QA HUMANO</li>
+                    <li>CONTINUIDAD VISUAL</li>
+                    <li>WHITE LABEL DISPONIBLE</li>
+                </ul>
+            </section>
+
+            <!-- ============ ESTADO Y CONTADOR ============ -->
+            <div class="results-meta">
+                <span class="results-meta__count" id="contador" role="status" aria-live="polite">207 RESULTADOS</span>
+            </div>
+
+            <!-- ============ GALERÍA ============ -->
+            <section class="portfolio-grid" id="archivo" tabindex="-1" aria-label="Piezas del archivo"></section>
+
+            <noscript>
+                <p class="noscript-note">
+                    ACTIVÁ JAVASCRIPT PARA EXPLORAR EL ARCHIVO.
+                </p>
+            </noscript>
+
+            <div class="load-more-wrap">
+                <button class="load-more" id="btn-mas" type="button">CARGAR MÁS PIEZAS ↓</button>
+            </div>
+        </main>
+
+        <!-- ============ FOOTER ============ -->
+        <footer class="site-footer" id="contacto">
+            <span class="plus plus--l" aria-hidden="true">+</span>
+            <span class="plus plus--r" aria-hidden="true">+</span>
+
+            <div class="footer-cta">
+                <span class="archive-tag">¿TENÉS UNA IDEA?</span>
+                <h2>LLEVÉMOSLA A PRODUCCIÓN.</h2>
+                <a href="mailto:nonplusultracreative@gmail.com" class="cta-btn cta-btn--block">IR A CONTACTO →</a>
+            </div>
+
+            <div class="footer-info">
+                <div class="footer-info__col">
+                    <p>REACCIÓN MEDIA — PRODUCTORA</p>
+                    <p>CHACO, ARGENTINA</p>
+                </div>
+                <div class="footer-info__col">
+                    <p><a href="mailto:reaccionmedia@gmail.com">REACCIONMEDIA@GMAIL.COM</a></p>
+                    <p><a href="https://wa.me/543624562950" target="_blank" rel="noopener noreferrer">+54 362 456-2950</a></p>
+                </div>
+                <div class="footer-info__col">
+                    <p>© <span id="anio">2026</span> REACCIÓN</p>
+                    <p>AGENCIA CREATIVA</p>
+                </div>
+            </div>
+        </footer>
+    </div><!-- /grid-container -->
+
+    <!-- ============ LIGHTBOX ============ -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lb-titulo" hidden>
+        <div class="lightbox__backdrop" data-lb-cerrar></div>
+        <div class="lightbox__panel" role="document">
+            <button class="lightbox__close" type="button" data-lb-cerrar aria-label="Cerrar detalle">CERRAR ✕</button>
+            <figure class="lightbox__figure">
+                <img id="lb-img" alt="">
+            </figure>
+            <div class="lightbox__meta">
+                <span class="archive-tag" id="lb-ref">REF. NPU-0000</span>
+                <h2 id="lb-titulo">—</h2>
+                <p class="lightbox__line" id="lb-linea">—</p>
+                <dl class="lightbox__specs" id="lb-specs"></dl>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
