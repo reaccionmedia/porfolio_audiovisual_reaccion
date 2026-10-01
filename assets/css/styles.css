@@ -213,6 +213,9 @@ ul {
     display: inline-block;
     border: 1px solid var(--text-primary);
     padding: 11px 18px;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 .cta-btn--block {
@@ -665,6 +668,34 @@ ul {
     margin-top: 2px;
 }
 
+.footer-info__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px 18px;
+}
+
+.footer-info__col--contact {
+    text-align: center;
+}
+
+.footer-info__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.footer-info__icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    fill: currentColor;
+    color: var(--text-primary);
+    opacity: 0.9;
+}
+
 .footer-info a {
     color: var(--text-primary);
     text-decoration: none;
@@ -674,6 +705,95 @@ ul {
 .footer-info a:hover {
     opacity: 0.6;
     text-decoration: underline;
+}
+
+/* ---------- CONTACTO ---------- */
+.contact-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    display: grid;
+    place-items: center;
+    padding: var(--gutter);
+}
+
+.contact-lightbox[hidden] {
+    display: none;
+}
+
+.contact-lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.contact-lightbox__panel {
+    position: relative;
+    width: min(520px, 100%);
+    padding: 42px var(--gutter) 30px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+}
+
+.contact-lightbox__panel h2 {
+    max-width: 380px;
+    margin: 12px 0 26px;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.contact-lightbox__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px 16px;
+    background: transparent;
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+}
+
+.contact-lightbox__close:hover {
+    background: var(--text-primary);
+    color: var(--bg-color);
+}
+
+.contact-lightbox__options {
+    display: grid;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 64px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.78rem;
+    transition: color 0.2s var(--ease), padding 0.2s var(--ease);
+}
+
+.contact-option:hover {
+    padding-inline: 8px;
+    color: var(--text-secondary);
+}
+
+.contact-option__icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    fill: currentColor;
+}
+
+.contact-option__arrow {
+    margin-left: auto;
 }
 
 /* ---------- 9. LIGHTBOX ---------- */
@@ -724,10 +844,18 @@ ul {
     border-right: 1px solid var(--border-color);
 }
 
-.lightbox__figure img {
+.lightbox__figure img,
+.lightbox__figure iframe {
     max-height: 88vh;
     width: 100%;
     object-fit: contain;
+}
+
+.lightbox__figure iframe {
+    aspect-ratio: 16 / 9;
+    border: 0;
+    background: #000;
+    min-height: 320px;
 }
 
 .lightbox__meta {
@@ -814,7 +942,8 @@ body.lb-abierto {
         border-bottom: 1px solid var(--border-color);
     }
 
-    .lightbox__figure img {
+    .lightbox__figure img,
+    .lightbox__figure iframe {
         max-height: 46vh;
     }
 

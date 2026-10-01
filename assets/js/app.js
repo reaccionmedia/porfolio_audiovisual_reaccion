@@ -22,6 +22,30 @@
     var contador = $('#contador');
     var btnMas = $('#btn-mas');
     var lb = $('#lightbox');
+    var lbVideo = $('#lb-video');
+    var lbImg = $('#lb-img');
+
+    var VIDEO_URLS = {
+        'Showreel 2026 | Reaction Media Lab': 'https://youtu.be/CB4SFLBrDUw',
+        'Reel de Infraestructura y Arquitectura': 'https://youtu.be/J6eOW4TUxVg',
+        'Cobertura de Eventos Corporativos': 'https://youtu.be/DVUSOTZAABU',
+        'Producción Audiovisual de Producto': 'https://youtu.be/vxAxVVpjwCI',
+        'Aftermovie Festivales y Grandes Eventos': 'https://youtu.be/Io63XQCvPis',
+        'Producción Audiovisual con Drones': 'https://youtu.be/-swjmXlcMho',
+        'Aftermovie Evento de UNAJE': 'https://youtu.be/41bCubCk_Yw',
+        'Portfolio para Comunicación Política': 'https://youtu.be/H2CtpTLCDDI',
+        'Recopilado Municipio de Barranqueras': 'https://youtu.be/dIUwWbG2Cxk',
+        'Barranqueras #Mega #Obras': 'https://youtu.be/6jpRd7aNlFM',
+        'Motion Graphics y Animación': 'https://youtu.be/mj5M6BrmQjs',
+        'Portfolio General 2023': 'https://youtu.be/4IGXsODu-Go'
+    };
+
+    function youtubeEmbedUrl(url) {
+        if (!url) { return ''; }
+        var match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^?&]+)/);
+        if (match) { return 'https://www.youtube.com/embed/' + match[1] + '?autoplay=1&rel=0'; }
+        return url;
+    }
 
     /* --- Formateo de fecha: "SEPTIEMBRE 2026" --- */
     function fechaLarga(iso) {
@@ -113,7 +137,6 @@
     }
 
     /* --- Lightbox --- */
-    var lbImg = $('#lb-img');
     var lbTitulo = $('#lb-titulo');
     var lbLinea = $('#lb-linea');
     var lbRef = $('#lb-ref');
@@ -135,8 +158,21 @@
         if (!pieza) { return; }
 
         ultimoFoco = document.activeElement;
-        lbImg.src = pieza.imagen;
-        lbImg.alt = pieza.titulo;
+        var videoUrl = VIDEO_URLS[pieza.titulo] || '';
+
+        if (videoUrl) {
+            lbImg.hidden = true;
+            lbImg.removeAttribute('src');
+            lbVideo.hidden = false;
+            lbVideo.src = youtubeEmbedUrl(videoUrl);
+        } else {
+            lbVideo.hidden = true;
+            lbVideo.removeAttribute('src');
+            lbImg.hidden = false;
+            lbImg.src = pieza.imagen;
+            lbImg.alt = pieza.titulo;
+        }
+
         lbTitulo.textContent = pieza.titulo;
         lbLinea.textContent = linea(pieza);
         lbRef.textContent = 'REF. ' + pieza.id;
@@ -160,7 +196,10 @@
         lb.hidden = true;
         // removeAttribute y no src='': un src vacío hace que el navegador
         // vuelva a pedir la página actual como si fuera una imagen.
+        lbImg.hidden = true;
         lbImg.removeAttribute('src');
+        lbVideo.hidden = true;
+        lbVideo.removeAttribute('src');
         document.body.classList.remove('lb-abierto');
         if (ultimoFoco && ultimoFoco.focus) { ultimoFoco.focus(); }
     }
