@@ -153,7 +153,6 @@ ul {
 .site-header,
 .hero,
 .site-footer,
-.mobile-menu,
 .results-meta {
     position: relative;
 }
@@ -231,68 +230,6 @@ ul {
 .cta-btn--outline:hover {
     color: var(--text-primary);
     border-color: var(--text-primary);
-}
-
-/* Botón de menú móvil */
-.nav-toggle {
-    display: none;
-    justify-self: end;
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--border-color);
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-toggle__bars {
-    display: grid;
-    gap: 5px;
-    width: 18px;
-}
-
-.nav-toggle__bars i {
-    display: block;
-    height: 1px;
-    background: var(--text-primary);
-    transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
-}
-
-.nav-toggle[aria-expanded='true'] .nav-toggle__bars i:first-child {
-    transform: translateY(3px) rotate(45deg);
-}
-
-.nav-toggle[aria-expanded='true'] .nav-toggle__bars i:last-child {
-    transform: translateY(-3px) rotate(-45deg);
-}
-
-/* Panel de navegación móvil */
-.mobile-menu {
-    display: none;
-    padding: 8px var(--gutter) 24px;
-    border-bottom: 1px solid var(--border-color);
-    background: var(--bg-elevated);
-}
-
-.mobile-menu[hidden] {
-    display: none;
-}
-
-.mobile-menu ul {
-    display: grid;
-}
-
-.mobile-menu a:not(.cta-btn) {
-    display: block;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border-color);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.12em;
-}
-
-.mobile-menu .cta-btn {
-    margin-top: 20px;
-    text-align: center;
 }
 
 /* ---------- 5. HERO ---------- */
@@ -947,13 +884,6 @@ body.lb-abierto {
         max-height: 46vh;
     }
 
-    .nav-toggle {
-        display: flex;
-    }
-
-    .mobile-menu.is-open:not([hidden]) {
-        display: block;
-    }
 }
 
 @media (max-width: 768px) {
@@ -1040,7 +970,9 @@ body.lb-abierto {
 
     .footer-info {
         flex-direction: column;
+        align-items: center;
         gap: 18px;
+        text-align: center;
     }
 }
 
@@ -1067,11 +999,6 @@ body.lb-abierto {
 }
 
 @media (max-width: 480px) {
-    /* El CTA ya vive dentro del menú móvil: acá sólo estorba. */
-    .cta-container {
-        display: none;
-    }
-
     .video-grid {
         grid-template-columns: 1fr;
     }

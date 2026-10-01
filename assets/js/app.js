@@ -204,35 +204,25 @@
         if (ultimoFoco && ultimoFoco.focus) { ultimoFoco.focus(); }
     }
 
-    /* --- Navegación móvil --- */
-    var navToggle = $('.nav-toggle');
-    var menuMovil = $('#menu-movil');
-
-    function alternarMenu(abrir) {
-        var estaAbierto = navToggle.getAttribute('aria-expanded') === 'true';
-        var nuevo = typeof abrir === 'boolean' ? abrir : !estaAbierto;
-        navToggle.setAttribute('aria-expanded', String(nuevo));
-        menuMovil.hidden = !nuevo;
-        menuMovil.classList.toggle('is-open', nuevo);
-    }
-
     /* --- Eventos --- */
-    btnMas.addEventListener('click', cargarMas);
+    if (btnMas) { btnMas.addEventListener('click', cargarMas); }
 
     // Apertura de detalle: click y teclado (Enter / Espacio)
-    grid.addEventListener('click', function (ev) {
-        var card = ev.target.closest('.portfolio-card');
-        if (card) { abrirDetalle(parseInt(card.getAttribute('data-index'), 10)); }
-    });
+    if (grid) {
+        grid.addEventListener('click', function (ev) {
+            var card = ev.target.closest('.portfolio-card');
+            if (card) { abrirDetalle(parseInt(card.getAttribute('data-index'), 10)); }
+        });
 
-    grid.addEventListener('keydown', function (ev) {
-        if (ev.key !== 'Enter' && ev.key !== ' ' && ev.key !== 'Spacebar') { return; }
-        var card = ev.target.closest('.portfolio-card');
-        if (card) {
-            ev.preventDefault();
-            abrirDetalle(parseInt(card.getAttribute('data-index'), 10));
-        }
-    });
+        grid.addEventListener('keydown', function (ev) {
+            if (ev.key !== 'Enter' && ev.key !== ' ' && ev.key !== 'Spacebar') { return; }
+            var card = ev.target.closest('.portfolio-card');
+            if (card) {
+                ev.preventDefault();
+                abrirDetalle(parseInt(card.getAttribute('data-index'), 10));
+            }
+        });
+    }
 
     // Cierre del lightbox: botón, backdrop y tecla Escape
     $$('[data-lb-cerrar]').forEach(function (b) {
@@ -242,19 +232,12 @@
     document.addEventListener('keydown', function (ev) {
         if (ev.key === 'Escape') {
             if (!lb.hidden) { cerrarDetalle(); return; }
-            if (navToggle.getAttribute('aria-expanded') === 'true') { alternarMenu(false); }
         }
-    });
-
-    navToggle.addEventListener('click', function () { alternarMenu(); });
-
-    menuMovil.addEventListener('click', function (ev) {
-        if (ev.target.tagName === 'A') { alternarMenu(false); }
     });
 
     /* --- Init --- */
     var anio = $('#anio');
     if (anio) { anio.textContent = String(new Date().getFullYear()); }
 
-    pintar();
+    if (grid) { pintar(); }
 }());
