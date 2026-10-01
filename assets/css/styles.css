@@ -909,7 +909,7 @@ body.lb-abierto {
     }
 
     .hero h1 {
-        font-size: clamp(2.75rem, 15vw, 5rem);
+        font-size: clamp(2.5rem, 13vw, 5rem);
         margin-bottom: 22px;
     }
 
@@ -974,6 +974,15 @@ body.lb-abierto {
         gap: 18px;
         text-align: center;
     }
+
+    .footer-info__col {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-info__contacts {
+        width: 100%;
+    }
 }
 
 /* Header en pantallas angostas: la marca y el CTA no pueden competir por el
@@ -995,6 +1004,24 @@ body.lb-abierto {
     .cta-container .cta-btn {
         padding: 9px 12px;
         font-size: 0.62rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 360px) {
+    .site-header {
+        gap: 8px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .brand__logo {
+        height: 24px;
+    }
+
+    .cta-container .cta-btn {
+        padding: 8px 9px;
+        font-size: 0.56rem;
     }
 }
 
