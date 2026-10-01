@@ -161,9 +161,9 @@ ul {
 
 /* ---------- 4. HEADER & NAVEGACIÓN ---------- */
 .site-header {
-    /* Sin navegación: la marca y el CTA se reparten los extremos. */
-    display: flex;
-    justify-content: space-between;
+    /* Dos columnas explícitas mantienen visible el CTA junto a la marca. */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: var(--gutter);
     padding: 18px var(--gutter);
@@ -206,6 +206,8 @@ ul {
 .cta-container {
     display: flex;
     justify-content: flex-end;
+    position: relative;
+    z-index: 2;
 }
 
 .cta-btn {
@@ -985,10 +987,8 @@ body.lb-abierto {
     }
 }
 
-/* Header en pantallas angostas: la marca y el CTA no pueden competir por el
-   ancho, o el `nowrap` de la marca empuja el botón y lo solapa. */
+/* Header en pantallas angostas: la marca puede reducirse sin ocultar el CTA. */
 @media (max-width: 560px) {
-    /* El header es flex con space-between: acá sólo se ajustan medidas. */
     .site-header {
         gap: 10px;
     }
