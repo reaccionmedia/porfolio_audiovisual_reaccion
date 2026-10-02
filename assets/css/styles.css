@@ -161,12 +161,12 @@ ul {
 
 /* ---------- 4. HEADER & NAVEGACIÓN ---------- */
 .site-header {
-    /* Grilla vertical: logotipo arriba, contacto debajo. */
+    /* En escritorio y tablet: marca a la izquierda, contacto a la derecha. */
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    justify-items: center;
-    gap: 14px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: var(--gutter);
     padding: 18px var(--gutter);
     border-bottom: 1px solid var(--border-color);
     background: rgba(5, 5, 5, 0.92);
@@ -180,8 +180,8 @@ ul {
 .brand {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    width: auto;
     min-width: 0;
 }
 
@@ -208,15 +208,15 @@ ul {
 
 .cta-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     position: relative;
     z-index: 2;
-    width: 100%;
-    max-width: 320px;
+    width: auto;
+    max-width: none;
 }
 
 .site-header .cta-btn {
-    width: 100%;
+    width: auto;
     text-align: center;
 }
 
@@ -1000,11 +1000,29 @@ body.lb-abierto {
 /* En móvil, el logotipo gana presencia y el botón conserva toda la fila. */
 @media (max-width: 560px) {
     .site-header {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        justify-items: center;
         gap: 12px;
+    }
+
+    .brand {
+        justify-content: center;
+        width: 100%;
     }
 
     .brand__logo {
         height: 48px;
+    }
+
+    .cta-container {
+        justify-content: center;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .site-header .cta-btn {
+        width: 100%;
     }
 
     .cta-container .cta-btn {
