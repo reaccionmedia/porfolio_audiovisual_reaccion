@@ -161,11 +161,12 @@ ul {
 
 /* ---------- 4. HEADER & NAVEGACIÓN ---------- */
 .site-header {
-    /* Dos columnas explícitas mantienen visible el CTA junto a la marca. */
+    /* Grilla vertical: logotipo arriba, contacto debajo. */
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: var(--gutter);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    justify-items: center;
+    gap: 14px;
     padding: 18px var(--gutter);
     border-bottom: 1px solid var(--border-color);
     background: rgba(5, 5, 5, 0.92);
@@ -179,6 +180,8 @@ ul {
 .brand {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     min-width: 0;
 }
 
@@ -187,7 +190,7 @@ ul {
 .brand__logo {
     display: block;
     width: auto;
-    height: 34px;
+    height: 40px;
 }
 
 .cta-btn {
@@ -205,9 +208,16 @@ ul {
 
 .cta-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     position: relative;
     z-index: 2;
+    width: 100%;
+    max-width: 320px;
+}
+
+.site-header .cta-btn {
+    width: 100%;
+    text-align: center;
 }
 
 .cta-btn {
@@ -987,18 +997,14 @@ body.lb-abierto {
     }
 }
 
-/* Header en pantallas angostas: la marca puede reducirse sin ocultar el CTA. */
+/* En móvil, el logotipo gana presencia y el botón conserva toda la fila. */
 @media (max-width: 560px) {
     .site-header {
-        gap: 10px;
-    }
-
-    .brand {
-        min-width: 0;
+        gap: 12px;
     }
 
     .brand__logo {
-        height: 27px;
+        height: 48px;
     }
 
     .cta-container .cta-btn {
@@ -1016,7 +1022,7 @@ body.lb-abierto {
     }
 
     .brand__logo {
-        height: 24px;
+        height: 42px;
     }
 
     .cta-container .cta-btn {
